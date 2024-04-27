@@ -1,7 +1,6 @@
 // helper_funcs.cpp
 
-#include "helper_funcs.h"
-#include <Adafruit_NeoPixel-1.12.0/Adafruit_NeoPixel.h>
+#include <Adafruit_NeoPixel.h>
 
 
 /**

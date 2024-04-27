@@ -8,7 +8,7 @@ Date of Begin: 28.07.2020
 // imports
 
 #include "helper_funcs.h"
-#include <Adafruit_NeoPixel-1.12.0/Adafruit_NeoPixel.h>
+#include <Adafruit_NeoPixel.h>
 
 #define LED_COUNT 81
 #define LED_PIN 6

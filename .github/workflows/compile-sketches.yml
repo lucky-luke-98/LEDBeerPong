@@ -2,7 +2,7 @@ name: Compile Sketches
 
 on:
   - push
-  - pull_request
+
 jobs:
   compile-sketches:
     runs-on: ubuntu-latest
@@ -17,4 +17,5 @@ jobs:
           sketch-paths: |
             - sketches/final_code_interactive
           libraries: |
-            - name: Adafruit-NeoPixel
+            - name: Adafruit NeoPixel
+              version: 1.12.0

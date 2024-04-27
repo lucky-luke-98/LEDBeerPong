@@ -2,7 +2,7 @@
 /*
 Projekt: Beerpong-Tisch
 Part: 4
-Autor: Lukas Jäschke
+Author: Lukas Jäschke
 Date of Begin: 28.07.2020
 */
 // Implementierung der LED-Bibliothek

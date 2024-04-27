@@ -1,97 +1,71 @@
 
 /*
-Projekt: Beerpong-Tisch
-Part: 4
-Autor: Lukas Jäschke
+Projekt: LEDBeerPong
+Author: Lukas Jäschke
 Date of Begin: 28.07.2020
 */
-// Implementierung der LED-Bibliothek
 
-#include <Adafruit_NeoPixel.h>
+// imports
 
-Adafruit_NeoPixel pix = Adafruit_NeoPixel(81, 6, NEO_GRB + NEO_KHZ800);
+#include "helper_funcs.h"
+#include <Adafruit_NeoPixel-1.12.0/Adafruit_NeoPixel.h>
 
-// Definition der Variablen
+#define LED_COUNT 81
+#define LED_PIN 6
 
-int hellig[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+// specifying (LED_COUNT, LED_PIN, TYPE_FLAGS (here: grb bitstream, 800 KHz bitstream))
 
-static int summe[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+Adafruit_NeoPixel pix = Adafruit_NeoPixel(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+
+// definition of variables
+
+int hellig[10] = {};
+static int summe[10] = {};
 static int anzahl = 0;
-int start[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-int reihenfolge[] = {0, 1, 3, 4, 6, 7, 9, 10, 12, 13};
-
+int start[10] = {};
+int reihenfolge[] = {0, 1, 3, 4, 6, 7, 9, 10, 12, 13};  // pins for the photoresistors
+static float threshold = 0.8;
 int writ[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-
-int active[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int active[10] = {};
 
 
 void setup() {
 
-Serial.begin(9600);
-pix.begin();
+// setup
 
-for(int i = 0; i<81; i++)
-{
-  pix.setPixelColor(i, pix.Color(0, 0, 0));
-}
-pix.show();
-
-// Ermittlung und Aufsummierung
-
-for(int i=0; i<10; i++)
-{
-  for(int j=0; j<10; j++)
-  {
-    summe[j]+=analogRead(j);
-    Serial.print(analogRead(j));
-    Serial.print("    ");
-  }
-  Serial.println("");
-  anzahl++;
-  pix.setPixelColor(4*i, pix.Color(47, 79, 79));
-  pix.setPixelColor(4*i+1, pix.Color(47, 79, 79));
-  pix.setPixelColor(4*i+2, pix.Color(47, 79, 79));
-  pix.setPixelColor(4*i+3, pix.Color(47, 79, 79));
-  pix.setPixelColor(80-4*i, pix.Color(47, 79, 79));
-  pix.setPixelColor(79-4*i, pix.Color(47, 79, 79));
-  pix.setPixelColor(78-4*i, pix.Color(47, 79, 79));
-  pix.setPixelColor(77-4*i, pix.Color(47, 79, 79));
-  delay(300);
-  pix.show();
-}
-
-// Berechnung der Durchschnittswerte
-
-for(int i=0; i<10; i++)
-{
-  start[i] = summe[i]/anzahl;
-  Serial.print(i+1);
-  Serial.print(". Photoresistor:  ");
-  Serial.println(start[i]);
-}
-
-pix.clear();
-pix.show();
+initializeSerialAndPixel(pix, LED_COUNT);
+static int* avg_brightness = initializePhotoresistors(10, pix, 300);
 
 }
 
 void loop() {
 
+// continous loop of the Arduino
+
+// number of active cups on the table
 int activenumb = 0;  
+
+// reading in the current brightness
 
 for(int i=0; i<10; i++)
 {
   hellig[i] = analogRead(reihenfolge[i]);  
 }
 
+/* 
+checking whether the current brightness is lower than threshold % of the init_value.
+in this case active means that there is no cup on the position
+*/
+
 for(int i=0; i<10; i++)
 {
-  if(hellig[i] < start[i]*0.8)
+  if(hellig[i] < start[i]*threshold)
   {
     active[i] = 1;
   }
 }
+
+// print out current brightness of the photosensors
 
     Serial.print(hellig[0]);
     Serial.print("   ");
@@ -113,6 +87,8 @@ for(int i=0; i<10; i++)
     Serial.print("   ");
     Serial.println(hellig[9]);
 
+// get number of total cups on the table
+
 for(int i=0; i<10; i++)
 {
   if(active[i] == 1)
@@ -120,6 +96,8 @@ for(int i=0; i<10; i++)
     activenumb++;
   }
 }
+
+// iterate over all activenumb values
 
 for(int i=1; i<11; i++)
 {

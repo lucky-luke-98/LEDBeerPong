@@ -25,13 +25,15 @@ static float threshold = 0.8;
 int writ[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 int active[10] = {};
 
+static int* avg_brightness;
+
 
 void setup() {
 
 // setup
 
 initializeSerialAndPixel(pix, LED_COUNT);
-static int* avg_brightness = initializePhotoresistors(10, pix, 300);
+avg_brightness = initializePhotoresistors(10, pix, 300);
 
 }
 
@@ -54,35 +56,20 @@ checking whether the current brightness is lower than threshold % of the init_va
 in this case active means that there is no cup on the position
 */
 
-for(int i=0; i<10; i++)
+for(int resistor=0; resistor<10; resistor++)
 {
-  if(hellig[i] < start[i]*threshold)
+  if(hellig[resistor] < avg_brightness[resistor]*threshold)
   {
-    active[i] = 1;
+    active[resistor] = 1;
   }
 }
 
 // print out current brightness of the photosensors
 
-    Serial.print(hellig[0]);
-    Serial.print("   ");
-    Serial.print(hellig[1]);
-    Serial.print("   ");
-    Serial.print(hellig[2]);
-    Serial.print("   ");
-    Serial.print(hellig[3]);
-    Serial.print("   ");
-    Serial.print(hellig[4]);
-    Serial.print("   ");
-    Serial.print(hellig[5]);
-    Serial.print("   ");
-    Serial.print(hellig[6]);
-    Serial.print("   ");
-    Serial.print(hellig[7]);
-    Serial.print("   ");
-    Serial.print(hellig[8]);
-    Serial.print("   ");
-    Serial.println(hellig[9]);
+for(int resistor=0; resistor<10; resistor++){
+  Serial.print(hellig[resistor]);
+  Serial.print("   ");
+}
 
 // get number of total cups on the table
 

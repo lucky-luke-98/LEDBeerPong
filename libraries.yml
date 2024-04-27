@@ -1,0 +1,4 @@
+# libraries necessary for the project
+
+- name: Adafruit NeoPixel
+  version: 1.12.0

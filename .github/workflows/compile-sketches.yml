@@ -14,8 +14,11 @@ jobs:
       - name: Compile sketches
         uses: arduino/compile-sketches@v1
         with:
+          fqbn: "arduino:avr:mega"
           sketch-paths: |
             - sketches/final_code_interactive
           libraries: |
             - name: Adafruit NeoPixel
               version: 1.12.0
+          verbose: true
+          enable-warnings-report: true

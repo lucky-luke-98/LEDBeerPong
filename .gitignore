@@ -1,3 +1,6 @@
 # gitignore for LEDBeerPong
 
 *.pptx
+
+# VS code specific files
+*.vscode

@@ -20,9 +20,6 @@ Adafruit_NeoPixel pix = Adafruit_NeoPixel(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ8
 // definition of variables
 
 int hellig[10] = {};
-static int summe[10] = {};
-static int anzahl = 0;
-int start[10] = {};
 int reihenfolge[] = {0, 1, 3, 4, 6, 7, 9, 10, 12, 13};  // pins for the photoresistors
 static float threshold = 0.8;
 int writ[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};

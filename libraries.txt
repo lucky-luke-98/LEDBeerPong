@@ -1,3 +1,0 @@
-# libraries necessary for the project
-
-Adafruit_NeoPixel

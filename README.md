@@ -8,7 +8,7 @@ The main idea was to create a resilient and appealing beerpong table that is abl
 
 <div align="center">
   <p>
-      <img width="10%" src="docs/arduino_logo.svg">
+      <img width="25%" src="docs/arduino_logo.png">
   </p>
 </div>
 
@@ -18,6 +18,7 @@ Please also note that most of the code is created by a beginner. Thus, finding w
 
 ## Built:
 
+...
 
 ## Explanations and details:
 
@@ -25,6 +26,8 @@ If you are interested in details of the table and the decision making, I recomme
 
 ## Contributions:
 
-I stopped the creation of my code in the beginning of 2021. Further this table is not in use anymore. \
-Hence, I most likely will not change anything anymore. \ However, feel free to fork this repository yourself or contact me regarding questions. \
+I stopped the creation of my code in the beginning of 2021. Further, this table is not in use anymore. \
+Hence, I most likely will not change anything anymore.
+
+However, feel free to fork this repository yourself or contact me regarding questions. \
 Moreover, if you are interested in buying this table you can contact me as well.

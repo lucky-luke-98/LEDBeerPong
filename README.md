@@ -1,10 +1,11 @@
 # LEDBeerPong (2020)
 <div align='center'>
 
+Status: <b> :warning: undone :warning: </b>\
 [![License](https://img.shields.io/badge/License-MIT-red)](LICENSE.md "Go to license section")
 ![Arduino Version](https://img.shields.io/badge/Arduino-1.8.12-blue) 
 [![Compile Sketches](https://github.com/lucky-luke-98/LEDBeerPong/actions/workflows/compile-sketches.yml/badge.svg)](https://github.com/lucky-luke-98/LEDBeerPong/actions/workflows/compile-sketches.yml)
-![Open Issues](https://img.shields.io/github/issues-raw/lucky-luke-98/LEDBeerPong) \
+![Open Issues](https://img.shields.io/github/issues-raw/lucky-luke-98/LEDBeerPong)\
 [Documentation](https://github.com/lucky-luke-98/LEDBeerPong/blob/main/docs/README.md) 
   <p>
       <img width="15%" src="docs/images/arduino_logo.png">
